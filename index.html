@@ -1,528 +1,466 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darija Academy | Apprenez la Darija facilement</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Darija Academy | L'Excellence du Dialecte Marocain</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
-        /* --- VARIABLES & RESET --- */
         :root {
-            --primary-red: #C60B1E;
-            --primary-green: #006233;
-            --light-bg: #f8f9fa;
-            --dark-text: #2d3436;
-            --shadow-3d: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
-            --shadow-3d-hover: 12px 12px 20px #d1d9e6, -12px -12px 20px #ffffff;
-            --transition: all 0.3s ease;
+            --morocco-red: #c1272d;
+            --morocco-green: #006233;
+            --gold: #d4af37;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--light-bg); color: var(--dark-text); overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
-        
-        /* --- NAVIGATION --- */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 700; color: var(--primary-green); display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--primary-red); }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { font-weight: 600; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary-red); }
 
-        /* --- HERO SECTION --- */
-        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, rgba(0,98,51,0.1) 0%, rgba(198,11,30,0.1) 100%); }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: var(--primary-green); }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
-        .btn-3d { display: inline-block; padding: 15px 30px; border-radius: 30px; font-weight: 700; color: white; background: var(--primary-red); box-shadow: 0 10px 20px rgba(198,11,30,0.3); transition: var(--transition); border: none; cursor: pointer; text-transform: uppercase; }
-        .btn-3d:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(198,11,30,0.4); }
-        .btn-3d.green { background: var(--primary-green); box-shadow: 0 10px 20px rgba(0,98,51,0.3); }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
-        /* --- SECTIONS COMMUNES --- */
-        section { padding: 80px 5%; text-align: center; }
-        .section-title { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 50px; position: relative; display: inline-block; }
-        .section-title::after { content: ''; width: 50%; height: 4px; background: var(--primary-red); position: absolute; bottom: -10px; left: 25%; border-radius: 2px; }
+        .arabic-font { font-family: 'Amiri', serif; }
 
-        /* --- STATISTIQUES --- */
-        .stats-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .stat-card { background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-3d); width: 200px; }
-        .stat-card i { font-size: 40px; color: var(--primary-red); margin-bottom: 15px; }
-        .stat-card h3 { font-size: 2rem; color: var(--primary-green); }
+        /* Background 3D Effect */
+        .bg-3d-mesh {
+            background: 
+                radial-gradient(at 0% 0%, rgba(193, 39, 45, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(0, 98, 51, 0.15) 0, transparent 50%);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-        /* --- ACTIVITÉS --- */
-        .activities-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .activity-card { background: white; padding: 40px 20px; border-radius: 20px; width: 300px; box-shadow: var(--shadow-3d); transition: var(--transition); transform-style: preserve-3d; }
-        .activity-card:hover { transform: translateY(-10px) rotateX(5deg); box-shadow: var(--shadow-3d-hover); }
-        .activity-card i { font-size: 50px; color: var(--primary-green); margin-bottom: 20px; }
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-        /* --- ACTUALITÉS --- */
-        .news-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .news-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-3d); width: 350px; text-align: left; }
-        .news-card img { width: 100%; height: 200px; object-fit: cover; }
-        .news-content { padding: 20px; }
-        .news-content h3 { color: var(--primary-red); margin-bottom: 10px; }
+        .glass-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--morocco-green);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
-        /* --- PRIX --- */
-        .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .pricing-card { background: white; padding: 40px; border-radius: 20px; width: 300px; box-shadow: var(--shadow-3d); position: relative; }
-        .pricing-card.popular { border: 3px solid var(--primary-red); transform: scale(1.05); }
-        .pricing-card .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-red); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
-        .pricing-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .pricing-card .price { font-size: 2.5rem; color: var(--primary-green); font-weight: bold; margin-bottom: 20px; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: var(--morocco-red); border-radius: 10px; }
 
-        /* --- INSCRIPTION & CONFIRMATION --- */
-        .register-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow-3d); }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 10px; outline: none; transition: var(--transition); }
-        .form-group input:focus { border-color: var(--primary-green); box-shadow: 0 0 8px rgba(0,98,51,0.2); }
-        #confirmation-message { display: none; text-align: center; padding: 40px; }
-        #confirmation-message i { font-size: 60px; color: var(--primary-green); margin-bottom: 20px; }
+        /* Hero Text Animation */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, var(--gold), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
 
-        /* --- AVIS & RATING --- */
-        .reviews-container { display: flex; gap: 20px; overflow-x: auto; padding: 20px; scroll-snap-type: x mandatory; }
-        .review-card { min-width: 300px; background: white; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-3d); scroll-snap-align: start; text-align: left; }
-        .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .review-header img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-        .stars { color: #f1c40f; }
-        .tag { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
-        .tag.mre { background: #ffeaa7; color: #d63031; }
-        .tag.expat { background: #74b9ff; color: #0984e3; }
-        .tag.student { background: #55efc4; color: #00b894; }
-        
-        .add-review-box { max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-3d); }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- FAQ --- */
-        .faq-item { max-width: 800px; margin: 0 auto 15px; background: white; border-radius: 10px; box-shadow: var(--shadow-3d); overflow: hidden; text-align: left; }
-        .faq-question { padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; color: var(--primary-green); }
-        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        /* 3D Chatbot Floating */
+        .chatbot-sphere {
+            animation: float 4s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--morocco-red), var(--morocco-green));
+            box-shadow: 0 0 30px rgba(0, 98, 51, 0.5);
+        }
 
-        /* --- FOOTER & CONTACT --- */
-        footer { background: #111; color: white; padding: 50px 5% 20px; text-align: center; }
-        .socials { font-size: 24px; margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
-        .socials a:hover { color: var(--primary-red); }
-        .made-by { margin-top: 30px; font-size: 0.9rem; color: #888; border-top: 1px solid #333; padding-top: 20px; }
-        .made-by span { color: var(--primary-green); font-weight: bold; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
 
-        /* --- FLOAT BUTTONS (WHATSAPP & CHATBOT) --- */
-        .float-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: var(--transition); z-index: 1000; }
-        .whatsapp-btn { background: #25D366; right: 30px; }
-        .chatbot-btn { background: linear-gradient(135deg, var(--primary-green), var(--primary-red)); right: 110px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        /* CHATBOT UI */
-        .chat-window { position: fixed; bottom: 100px; right: 110px; width: 350px; height: 450px; background: white; border-radius: 20px; box-shadow: var(--shadow-3d); display: none; flex-direction: column; overflow: hidden; z-index: 1000; border: 2px solid var(--primary-green); }
-        .chat-header { background: var(--primary-green); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f0f2f5; }
-        .msg { padding: 10px 15px; border-radius: 15px; max-width: 80%; font-size: 0.9rem; }
-        .msg.bot { background: white; align-self: flex-start; border-bottom-left-radius: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .msg.user { background: var(--primary-red); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
-        .chat-input { display: flex; padding: 10px; background: white; border-top: 1px solid #eee; }
-        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
-        .chat-input button { background: var(--primary-green); color: white; border: none; padding: 10px 15px; border-radius: 50%; margin-left: 10px; cursor: pointer; }
+        .zellige-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            opacity: 0.1;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo"><i class="fa-solid fa-language"></i> Darija <span>Academy</span></div>
-        <div class="nav-links">
-            <a href="#activities">Activités</a>
-            <a href="#news">Actualités</a>
-            <a href="#pricing">Tarifs</a>
-            <a href="#testimonials">Avis</a>
-            <a href="#contact">Contact</a>
+    <div class="bg-3d-mesh"></div>
+
+    <nav class="fixed w-full z-50 glass-card border-none px-6 py-4 flex justify-between items-center mt-4 mx-auto max-w-7xl rounded-full left-0 right-0">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center font-bold border-2 border-green-500">DA</div>
+            <span class="text-xl font-black tracking-tighter">DARIJA ACADEMY</span>
+        </div>
+        <div class="hidden lg:flex items-center gap-10 font-semibold text-sm uppercase tracking-widest">
+            <a href="#home" class="hover:text-green-500 transition">Accueil</a>
+            <a href="#about" class="hover:text-green-500 transition">L'Académie</a>
+            <a href="#services" class="hover:text-green-500 transition">Programmes</a>
+            <a href="#reviews" class="hover:text-green-500 transition">Avis</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="#signup" class="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-green-600 hover:text-white transition duration-300">Rejoindre</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <h1>Apprenez la Darija avec Style et Simplicité !</h1>
-        <p>Rejoignez la première académie dédiée à la langue et la culture marocaine.</p>
-        <a href="#register" class="btn-3d">S'inscrire Maintenant</a>
-    </header>
-
-    <section id="stats">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fa-solid fa-users"></i>
-                <h3 id="count-students">0</h3>
-                <p>Étudiants actifs</p>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-chalkboard-user"></i>
-                <h3 id="count-trainers">0</h3>
-                <p>Formateurs experts</p>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-star"></i>
-                <h3>4.9/5</h3>
-                <p>Note moyenne</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities">
-        <h2 class="section-title">Nos Activités</h2>
-        <div class="activities-grid">
-            <div class="activity-card">
-                <i class="fa-solid fa-comments"></i>
-                <h3>Cours de Conversation</h3>
-                <p>Pratiquez la Darija du quotidien à travers des mises en situation réelles.</p>
-            </div>
-            <div class="activity-card">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Grammaire & Vocabulaire</h3>
-                <p>Des bases solides avec des supports pédagogiques modernes.</p>
-            </div>
-            <div class="activity-card">
-                <i class="fa-solid fa-earth-africa"></i>
-                <h3>Immersion Culturelle</h3>
-                <p>Ateliers de cuisine, musique et traditions marocaines.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="news" style="background: white;">
-        <h2 class="section-title">Actualités de l'Académie</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ouverture">
-                <div class="news-content">
-                    <h3>Ouverture des Inscriptions 2026</h3>
-                    <p>Les places sont limitées ! Rejoignez notre session de Printemps pour maîtriser la Darija en 3 mois.</p>
-                    <br>
-                    <a href="#register" class="btn-3d" style="padding: 10px 20px; font-size: 0.9rem;">S'inscrire</a>
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="text-green-500 font-bold tracking-widest uppercase mb-4 block text-sm">Bienvenue au Royaume de l'Apprentissage</span>
+                <h1 class="text-6xl lg:text-8xl font-black leading-none mb-6">Parlez la <br><span class="text-gradient italic">Darija</span> avec <span class="text-red-600">Fierté.</span></h1>
+                <p class="text-lg text-gray-400 max-w-lg mb-8 leading-relaxed">
+                    Une immersion totale dans la culture marocaine grâce à une pédagogie innovante assistée par IA. Apprenez le dialecte le plus riche au monde.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded-2xl font-black text-lg transition shadow-lg shadow-red-900/40">COMMENCER ICI</button>
+                    <div class="flex -space-x-3 items-center">
+                        <img class="w-12 h-12 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?u=1">
+                        <img class="w-12 h-12 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?u=2">
+                        <img class="w-12 h-12 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?u=3">
+                        <span class="ml-4 text-sm font-bold">+2k Étudiants</span>
+                    </div>
                 </div>
             </div>
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recrutement">
-                <div class="news-content">
-                    <h3>On recrute un(e) Formateur(trice) !</h3>
-                    <p>Vous êtes passionné(e) par la pédagogie et la Darija ? Rejoignez notre équipe dynamique.</p>
-                    <br>
-                    <button class="btn-3d green" style="padding: 10px 20px; font-size: 0.9rem;">Postuler</button>
-                </div>
+            <div class="relative" data-aos="zoom-in-left">
+                <div class="absolute -inset-4 bg-gradient-to-r from-red-600 to-green-600 rounded-full blur-3xl opacity-20"></div>
+                <img src="https://images.unsplash.com/photo-1539667468225-8df667dca00c?auto=format&fit=crop&w=1000&q=80" alt="Culture Marocaine" class="rounded-[40px] shadow-2xl border-4 border-white/10 relative z-10">
             </div>
         </div>
     </section>
 
-    <section id="pricing">
-        <h2 class="section-title">Nos Abonnements à Prix Bas</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Découverte</h3>
-                <div class="price">99 Dhs<span>/mois</span></div>
-                <ul style="list-style: none; margin-bottom: 20px; text-align: left; padding-left: 20px;">
-                    <li>✔️ 2h de cours/semaine</li>
-                    <li>✔️ Accès au forum</li>
-                    <li>❌ Ateliers culturels</li>
+    <section class="py-20 bg-white/5 relative z-10">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8">
+            <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="users-2" class="mx-auto mb-4 text-red-500" size="40"></i>
+                <h3 class="text-4xl font-black mb-2">2,500</h3>
+                <p class="text-gray-400 uppercase text-xs tracking-widest">Diplômés</p>
+            </div>
+            <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="globe" class="mx-auto mb-4 text-green-500" size="40"></i>
+                <h3 class="text-4xl font-black mb-2">45</h3>
+                <p class="text-gray-400 uppercase text-xs tracking-widest">Nationalités</p>
+            </div>
+            <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                <i data-lucide="book-open" class="mx-auto mb-4 text-red-500" size="40"></i>
+                <h3 class="text-4xl font-black mb-2">120</h3>
+                <p class="text-gray-400 uppercase text-xs tracking-widest">Modules Vidéo</p>
+            </div>
+            <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="400">
+                <i data-lucide="award" class="mx-auto mb-4 text-green-500" size="40"></i>
+                <h3 class="text-4xl font-black mb-2">100%</h3>
+                <p class="text-gray-400 uppercase text-xs tracking-widest">Passion</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 relative">
+        <div class="text-center mb-20 px-6">
+            <h2 class="text-5xl font-black mb-4">Investissez dans votre <span class="text-green-500">Futur</span></h2>
+            <p class="text-gray-400">Des tarifs transparents pour une qualité royale.</p>
+        </div>
+        <div class="container mx-auto px-6 grid lg:grid-cols-3 gap-10">
+            <div class="glass-card p-10 rounded-[40px] border-t-4 border-red-600" data-aos="fade-up">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Pack Découverte</h3>
+                    <p class="text-gray-400 text-sm">Idéal pour les touristes et curieux.</p>
+                </div>
+                <div class="text-5xl font-black mb-8 italic">199 <span class="text-xl">MAD</span></div>
+                <ul class="space-y-4 mb-10 text-gray-300">
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Vocabulaire de base</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Accès plateforme 24/7</li>
+                    <li class="flex items-center gap-3 text-gray-600"><i data-lucide="x" class="text-red-500"></i> Coaching personnalisé</li>
                 </ul>
-                <a href="#register" class="btn-3d green" onclick="selectPlan('Découverte')">Choisir</a>
+                <button onclick="openRegister('Découverte')" class="w-full py-4 rounded-2xl border-2 border-white/20 font-bold hover:bg-white hover:text-black transition">SÉLECTIONNER</button>
             </div>
-            <div class="pricing-card popular">
-                <div class="badge">Le plus populaire</div>
-                <h3>Intensif</h3>
-                <div class="price">199 Dhs<span>/mois</span></div>
-                <ul style="list-style: none; margin-bottom: 20px; text-align: left; padding-left: 20px;">
-                    <li>✔️ 5h de cours/semaine</li>
-                    <li>✔️ Accès au forum</li>
-                    <li>✔️ 1 Atelier culturel/mois</li>
+
+            <div class="glass-card p-10 rounded-[40px] border-t-8 border-green-500 transform lg:-translate-y-8 bg-white/5 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute top-5 right-5 bg-green-500 text-xs font-black px-4 py-1 rounded-full animate-pulse">RECOMMANDÉ</div>
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Pack Immersion</h3>
+                    <p class="text-gray-400 text-sm">Pour les expatriés et conjoints.</p>
+                </div>
+                <div class="text-5xl font-black mb-8 italic">499 <span class="text-xl">MAD</span></div>
+                <ul class="space-y-4 mb-10 text-gray-200">
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Conversation courante</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Ateliers culturels LIVE</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Assistant IA Illimité</li>
                 </ul>
-                <a href="#register" class="btn-3d" onclick="selectPlan('Intensif')">Choisir</a>
+                <button onclick="openRegister('Immersion')" class="w-full py-4 rounded-2xl bg-green-600 font-black text-lg hover:bg-white hover:text-green-800 transition shadow-xl shadow-green-900/20">CHOISIR CE PACK</button>
             </div>
-            <div class="pricing-card">
-                <h3>VIP / Immersion</h3>
-                <div class="price">399 Dhs<span>/mois</span></div>
-                <ul style="list-style: none; margin-bottom: 20px; text-align: left; padding-left: 20px;">
-                    <li>✔️ Cours illimités</li>
-                    <li>✔️ Coaching privé 1-to-1</li>
-                    <li>✔️ Tous les ateliers</li>
+
+            <div class="glass-card p-10 rounded-[40px] border-t-4 border-red-600" data-aos="fade-up" data-aos-delay="400">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Pack Excellence</h3>
+                    <p class="text-gray-400 text-sm">Maitrise totale et certification.</p>
+                </div>
+                <div class="text-5xl font-black mb-8 italic">899 <span class="text-xl">MAD</span></div>
+                <ul class="space-y-4 mb-10 text-gray-300">
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Mentorat 1-to-1</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Stage d'immersion physique</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500"></i> Support prioritaire</li>
                 </ul>
-                <a href="#register" class="btn-3d green" onclick="selectPlan('VIP')">Choisir</a>
+                <button onclick="openRegister('Excellence')" class="w-full py-4 rounded-2xl border-2 border-white/20 font-bold hover:bg-white hover:text-black transition">SÉLECTIONNER</button>
             </div>
         </div>
     </section>
 
-    <section id="register" style="background: white;">
-        <h2 class="section-title">Rejoignez-nous</h2>
-        
-        <div class="register-container" id="form-container">
-            <form id="regForm">
-                <div class="form-group">
-                    <label>Nom complet</label>
-                    <input type="text" required placeholder="Votre nom">
+    <section class="py-20 px-6 container mx-auto">
+        <h2 class="text-4xl font-black mb-12 flex items-center gap-4">
+            <span class="w-12 h-1 bg-red-600"></span> Actualités de l'Académie
+        </h2>
+        <div class="grid lg:grid-cols-2 gap-10">
+            <div class="group relative overflow-hidden rounded-[30px] h-[400px]" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1528154032328-a651593c6b8c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent p-10 flex flex-col justify-end">
+                    <span class="bg-red-600 w-fit px-4 py-1 rounded text-xs mb-4">ÉVÉNEMENT</span>
+                    <h4 class="text-2xl font-bold">Ouverture des inscriptions Session Mars 2026</h4>
+                    <p class="text-gray-300 mt-2">Profitez de -15% avec le code MAROC2026.</p>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required placeholder="votre@email.com">
+            </div>
+            <div class="glass-card p-10 flex flex-col justify-center" data-aos="fade-left">
+                <h4 class="text-3xl font-black mb-6 text-green-500">Recrutement Urgent</h4>
+                <p class="text-gray-300 mb-8 leading-relaxed">Nous recherchons des formateurs passionnés par la transmission de la culture Darija. Vous avez une fibre pédagogique ? Rejoignez l'équipe de Hajar & Anas.</p>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Nom complet" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-green-500">
+                    <button class="bg-white text-black font-bold px-8 py-3 rounded-xl hover:bg-green-600 hover:text-white transition">POSTULER MAINTENANT</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-32 bg-zinc-900/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-5xl font-black italic">La voix de nos <span class="text-red-500">Étudiants</span></h2>
+                    <p class="text-gray-400 mt-4">Plus de 500 avis vérifiés sur Trustpilot.</p>
                 </div>
-                <div class="form-group">
-                    <label>Choix de l'abonnement</label>
-                    <select id="plan-select" required>
-                        <option value="Découverte">Découverte - 99 Dhs</option>
-                        <option value="Intensif" selected>Intensif - 199 Dhs</option>
-                        <option value="VIP">VIP - 399 Dhs</option>
+                <button onclick="toggleReviewForm()" class="bg-green-600 px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-red-600 transition">
+                    <i data-lucide="plus"></i> Écrire un avis
+                </button>
+            </div>
+
+            <div id="reviewDisplay" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+
+            <div id="reviewForm" class="hidden mt-16 max-w-2xl mx-auto glass-card p-10 rounded-[30px] border-2 border-green-500/30">
+                <h3 class="text-2xl font-bold mb-6">Partagez votre expérience</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input id="revName" type="text" placeholder="Nom" class="bg-white/5 p-4 rounded-xl border border-white/10 outline-none">
+                    <select id="revType" class="bg-white/5 p-4 rounded-xl border border-white/10 outline-none text-gray-400">
+                        <option>Expatrié</option>
+                        <option>Étudiant(e)</option>
+                        <option>Formateur</option>
+                        <option>MRE</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-3d" style="width: 100%;">Confirmer l'inscription</button>
-            </form>
-        </div>
-
-        <div class="register-container" id="confirmation-message">
-            <i class="fa-solid fa-circle-check"></i>
-            <h2 style="color: var(--primary-green); margin-bottom: 15px;">Mabrouk ! 🎉</h2>
-            <p style="font-size: 1.2rem; font-weight: 600;">Vous venez de faire le premier pas vers une aventure extraordinaire.</p>
-            <p style="margin-top: 10px;">Votre inscription à la <b>Darija Academy</b> est confirmée. Préparez-vous à parler, rire et vivre à la marocaine ! Nous vous avons envoyé un email avec tous les détails.</p>
+                <textarea id="revText" placeholder="Votre message..." class="w-full bg-white/5 p-4 rounded-xl border border-white/10 outline-none h-32 mb-4"></textarea>
+                <button onclick="submitNewReview()" class="w-full bg-white text-black py-4 rounded-xl font-bold hover:bg-green-600 transition">PUBLIER L'AVIS</button>
+            </div>
         </div>
     </section>
 
-    <section id="testimonials">
-        <h2 class="section-title">Ce qu'ils disent de nous</h2>
-        <div class="reviews-container" id="reviews-list">
-            <div class="review-card">
-                <div class="review-header">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
-                    <div>
-                        <h4>John Davis</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <span class="tag expat">Expatrié</span>
-                    </div>
+    <section class="py-32 container mx-auto px-6 max-w-4xl">
+        <h2 class="text-4xl font-black mb-12 text-center">Questions <span class="text-red-600 underline">Fréquentes</span></h2>
+        <div class="space-y-4">
+            <div class="faq-item glass-card p-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('bg-white/10')">
+                <div class="flex justify-between items-center font-bold text-lg">
+                    <span>Dois-je connaître l'Arabe Classique ?</span>
+                    <i data-lucide="chevron-down"></i>
                 </div>
-                <p>"Arrivé au Maroc il y a 6 mois, Darija Academy m'a sauvé ! Les profs sont top et la méthode est super pratique."</p>
+                <p class="mt-4 text-gray-400 hidden">Non, la Darija est un dialecte distinct. Notre méthode commence de zéro sans pré-requis.</p>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
-                    <div>
-                        <h4>Sarah Lahlou</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <span class="tag mre">MRE</span>
-                    </div>
-                </div>
-                <p>"Je voulais reconnecter avec mes racines. L'académie offre une ambiance chaleureuse et familiale. Bzaf d'amour !"</p>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Client">
-                    <div>
-                        <h4>Pierre Dumont</h4>
-                        <div class="stars">⭐⭐⭐⭐</div>
-                        <span class="tag student">Étudiant</span>
-                    </div>
-                </div>
-                <p>"En échange universitaire à Rabat, ces cours m'aident énormément à interagir au marché et dans les taxis."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client">
-                    <div>
-                        <h4>Fatima Zahra</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <span class="tag formateur">Formatrice</span>
-                    </div>
-                </div>
-                <p>"Enseigner ici est un pur bonheur. Les élèves sont motivés et les outils pédagogiques de l'académie sont incroyables."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Client">
-                    <div>
-                        <h4>Tarik B.</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <span class="tag mre">MRE</span>
-                    </div>
-                </div>
-                <p>"Un concept génial. Je peux enfin parler avec mes grands-parents sans traducteur. Merci l'équipe !"</p>
-            </div>
-        </div>
-
-        <div class="add-review-box">
-            <h3 style="margin-bottom: 20px; color: var(--primary-red);">Laissez votre avis</h3>
-            <form id="reviewForm">
-                <div class="form-group">
-                    <input type="text" id="revName" required placeholder="Votre Nom">
-                </div>
-                <div class="form-group">
-                    <select id="revType" required>
-                        <option value="student">Étudiant(e)</option>
-                        <option value="expat">Expatrié</option>
-                        <option value="mre">MRE</option>
-                        <option value="formateur">Formateur/trice</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea id="revText" required placeholder="Votre expérience avec nous..." style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; height: 100px;"></textarea>
-                </div>
-                <button type="submit" class="btn-3d green">Publier l'avis</button>
-            </form>
-        </div>
     </section>
 
-    <section id="faq" style="background: white;">
-        <h2 class="section-title">Questions Fréquentes</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Les cours sont-ils en ligne ou en présentiel ? <i class="fa-solid fa-chevron-down"></i></div>
-            <div class="faq-answer"><p style="padding: 15px 0;">Nous proposons un format hybride. Vous pouvez assister aux cours dans nos locaux ou suivre en direct via notre plateforme en ligne.</p></div>
+    <div id="signupModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl hidden p-4">
+        <div class="max-w-4xl w-full grid lg:grid-cols-2 glass-card border-none rounded-[40px] overflow-hidden">
+            <div class="p-12">
+                <h2 id="modalPackTitle" class="text-4xl font-black mb-4">Pack Immersion</h2>
+                <p class="text-gray-400 mb-8">Remplissez vos informations pour débuter l'aventure.</p>
+                <form onsubmit="handleFinalSubmit(event)" class="space-y-4">
+                    <input required type="text" placeholder="Nom Complet" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-red-500 transition">
+                    <input required type="email" placeholder="Email Professionnel" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-red-500 transition">
+                    <div class="flex items-center gap-3 py-4">
+                        <input type="checkbox" required class="w-5 h-5 accent-green-500">
+                        <span class="text-xs text-gray-400">J'accepte les conditions de Darija Academy.</span>
+                    </div>
+                    <button class="w-full bg-red-600 py-5 rounded-2xl font-black text-xl hover:scale-105 transition duration-300">CONFIRMER MON INSCRIPTION</button>
+                </form>
+            </div>
+            <div class="hidden lg:block relative">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&w=800&q=80" class="h-full w-full object-cover">
+                <div class="absolute inset-0 bg-red-900/40 mix-blend-multiply"></div>
+            </div>
         </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Dois-je connaître l'alphabet arabe ? <i class="fa-solid fa-chevron-down"></i></div>
-            <div class="faq-answer"><p style="padding: 15px 0;">Pas du tout ! Pour les débutants, nous utilisons une transcription en lettres latines (le franco-arabe) très utilisée au Maroc.</p></div>
-        </div>
-    </section>
+    </div>
 
-    <footer id="contact">
-        <h2>Contactez-nous</h2>
-        <p>Email: contact@darija-academy.ma | Tél: +212 6 00 00 00 00</p>
-        
-        <div class="socials">
-            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <div id="successPage" class="fixed inset-0 z-[200] bg-zinc-950 flex flex-col items-center justify-center text-center hidden p-6">
+        <div class="w-32 h-32 bg-green-500 rounded-full flex items-center justify-center mb-8 animate-bounce shadow-2xl shadow-green-500/50">
+            <i data-lucide="party-popper" size="60"></i>
         </div>
+        <h1 class="text-7xl font-black text-gradient mb-6">MABROUK ! 🎉</h1>
+        <p class="text-2xl text-gray-400 max-w-2xl leading-relaxed">
+            "Celui qui ne voyage pas ne connaît pas la valeur des hommes." <br>
+            <span class="text-white italic font-bold mt-4 block">- Proverbe Marocain</span>
+        </p>
+        <p class="mt-8 text-green-500 font-bold uppercase tracking-widest">Un mail de bienvenue vous attend.</p>
+        <button onclick="location.reload()" class="mt-12 bg-white text-black px-12 py-4 rounded-full font-black hover:bg-red-600 hover:text-white transition">RETOUR À L'ACCUEIL</button>
+    </div>
 
-        <div class="made-by">
-            Projet conçu et développé avec passion par <br>
-            <span>Anas Sikouk</span> & <span>Hajar Nebhani</span> © 2026
+    <div class="fixed bottom-8 right-8 z-[90]">
+        <div onclick="toggleChat()" class="chatbot-sphere w-16 h-16 rounded-full flex items-center justify-center cursor-pointer group">
+            <i data-lucide="bot" class="text-white group-hover:scale-110 transition"></i>
+        </div>
+        <div id="chatBox" class="hidden absolute bottom-20 right-0 w-96 glass-card rounded-3xl p-6 border-2 border-white/20">
+            <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="font-bold">IA DARIJA 3D (V3.1)</span>
+            </div>
+            <div id="chatMessages" class="h-64 overflow-y-auto space-y-4 mb-4 text-sm scroll-smooth pr-2">
+                <div class="bg-white/10 p-3 rounded-2xl rounded-tl-none italic">Salam ! Je suis votre guide virtuel. Comment dit-on "Le thé est délicieux" en Darija ? Posez-moi vos questions !</div>
+            </div>
+            <div class="flex gap-2">
+                <input id="chatInput" type="text" placeholder="Écrire ici..." class="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl outline-none" onkeypress="if(event.key==='Enter') sendChat()">
+                <button onclick="sendChat()" class="bg-green-600 p-3 rounded-xl"><i data-lucide="send" size="18"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed left-6 bottom-8 z-[90] flex flex-col gap-4">
+        <a href="https://wa.me/21260000000" class="w-12 h-12 glass-card flex items-center justify-center rounded-full text-green-500 hover:bg-green-500 hover:text-white transition"><i data-lucide="phone"></i></a>
+        <a href="#" class="w-12 h-12 glass-card flex items-center justify-center rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition"><i data-lucide="instagram"></i></a>
+        <a href="#" class="w-12 h-12 glass-card flex items-center justify-center rounded-full text-blue-400 hover:bg-blue-400 hover:text-white transition"><i data-lucide="video"></i></a>
+    </div>
+
+    <footer class="py-20 border-t border-white/10 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col items-center mb-10">
+                <div class="text-4xl font-black mb-4">DARIJA ACADEMY</div>
+                <div class="h-1 w-20 bg-red-600 mb-6"></div>
+                <p class="max-w-md text-gray-500 uppercase tracking-widest text-xs">Innovation - Culture - Transmission</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-left max-w-4xl mx-auto mb-20">
+                <div>
+                    <h5 class="font-bold mb-4">Lien rapides</h5>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>Mentions légales</li>
+                        <li>Politique de cookies</li>
+                        <li>Conditions de vente</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Contact</h5>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>contact@darija.ma</li>
+                        <li>Casablanca, Maroc</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-xs text-gray-600 font-mono">
+                DEVELOPED BY <span class="text-white">ANAS SIKOUK</span> & <span class="text-white">HAJAR NEBHANI</span> | 2026 &copy;
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/212600000000" class="float-btn whatsapp-btn" target="_blank" title="Discuter sur WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <div class="float-btn chatbot-btn" onclick="toggleChat()" title="Poser une question à notre IA">
-        <i class="fa-solid fa-robot"></i>
-    </div>
-
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <span>DarijaBot IA 🤖</span>
-            <i class="fa-solid fa-xmark" style="cursor: pointer;" onclick="toggleChat()"></i>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="msg bot">Salam ! Je suis l'assistant virtuel 3D de Darija Academy. Comment puis-je vous aider aujourd'hui ?</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Posez votre question..." onkeypress="handleChat(event)">
-            <button onclick="sendMsg()"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-    </div>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Animations des compteurs de statistiques
-        function animateValue(id, start, end, duration) {
-            let obj = document.getElementById(id);
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
+        AOS.init({ duration: 1200, once: false });
+        lucide.createIcons();
+
+        // Data Management
+        let dataAvis = [
+            { name: "Julian Smith", type: "Expatrié", text: "Incredible method. I can now haggle at the souks with confidence!", photo: "https://i.pravatar.cc/100?u=a" },
+            { name: "Fatima Zahra", type: "MRE", text: "Enfin une académie qui respecte les nuances du dialecte local.", photo: "https://i.pravatar.cc/100?u=b" },
+            { name: "Dr. Ahmed", type: "Formateur", text: "Un outil pédagogique révolutionnaire pour le Maroc.", photo: "https://i.pravatar.cc/100?u=c" },
+            { name: "Sophie", type: "Étudiant(e)", text: "Les sessions live sont le point fort. On s'amuse énormément.", photo: "https://i.pravatar.cc/100?u=d" },
+            { name: "Luca", type: "Expatrié", text: "Le pack Immersion a changé ma vie sociale à Marrakech.", photo: "https://i.pravatar.cc/100?u=e" }
+        ];
+
+        // Functions
+        function renderAvis() {
+            const container = document.getElementById('reviewDisplay');
+            container.innerHTML = dataAvis.map(a => `
+                <div class="glass-card p-8 rounded-3xl" data-aos="zoom-in">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="${a.photo}" class="w-14 h-14 rounded-full border-2 border-red-500">
+                        <div>
+                            <h4 class="font-black">${a.name}</h4>
+                            <span class="text-xs text-green-500 font-bold uppercase">${a.type}</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"${a.text}"</p>
+                    <div class="mt-6 flex text-yellow-500 gap-1">
+                        ${'<i data-lucide="star" fill="currentColor" size="14"></i>'.repeat(5)}
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
         }
-        
-        // Démarrer l'animation au chargement
-        window.onload = () => {
-            animateValue("count-students", 0, 1250, 2000);
-            animateValue("count-trainers", 0, 45, 2000);
-        };
+        renderAvis();
 
-        // Présélection de l'abonnement
-        function selectPlan(plan) {
-            document.getElementById('plan-select').value = plan;
+        function toggleReviewForm() {
+            document.getElementById('reviewForm').classList.toggle('hidden');
         }
 
-        // Soumission du formulaire d'inscription
-        document.getElementById('regForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('confirmation-message').style.display = 'block';
-        });
-
-        // FAQ Toggle
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('i');
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                icon.className = "fa-solid fa-chevron-down";
-            } else {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-                icon.className = "fa-solid fa-chevron-up";
+        function submitNewReview() {
+            const name = document.getElementById('revName').value;
+            const text = document.getElementById('revText').value;
+            const type = document.getElementById('revType').value;
+            
+            if(name && text) {
+                dataAvis.unshift({ name, type, text, photo: `https://i.pravatar.cc/100?u=${Math.random()}` });
+                renderAvis();
+                toggleReviewForm();
+                alert("Votre avis a été soumis avec succès !");
             }
         }
 
-        // Ajout dynamique d'un avis
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+        function openRegister(pack) {
+            document.getElementById('modalPackTitle').innerText = "Pack " + pack;
+            document.getElementById('signupModal').classList.remove('hidden');
+        }
+
+        function handleFinalSubmit(e) {
             e.preventDefault();
-            const name = document.getElementById('revName').value;
-            const type = document.getElementById('revType').value;
-            const text = document.getElementById('revText').value;
+            document.getElementById('signupModal').classList.add('hidden');
+            document.getElementById('successPage').classList.remove('hidden');
+            // Trigger Confetti here if library added
+        }
 
-            // Déterminer la classe et le label du tag
-            let tagClass = type;
-            let tagLabel = type === 'mre' ? 'MRE' : type === 'expat' ? 'Expatrié' : type === 'student' ? 'Étudiant(e)' : 'Formateur/trice';
-
-            // Créer le nouvel élément HTML
-            const newReview = document.createElement('div');
-            newReview.className = 'review-card';
-            newReview.innerHTML = `
-                <div class="review-header">
-                    <img src="https://ui-avatars.com/api/?name=${name}&background=random" alt="Client">
-                    <div>
-                        <h4>${name}</h4>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <span class="tag ${tagClass}">${tagLabel}</span>
-                    </div>
-                </div>
-                <p>"${text}"</p>
-            `;
-            
-            // L'ajouter au début de la liste
-            document.getElementById('reviews-list').prepend(newReview);
-            
-            // Réinitialiser le formulaire
-            this.reset();
-            alert("Merci pour votre avis ! Il a été ajouté avec succès.");
-        });
-
-        // --- LOGIQUE SIMULÉE DU CHATBOT IA ---
         function toggleChat() {
-            const chat = document.getElementById('chatWindow');
-            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+            document.getElementById('chatBox').classList.toggle('hidden');
         }
 
-        function handleChat(e) {
-            if (e.key === 'Enter') sendMsg();
-        }
-
-        function sendMsg() {
+        function sendChat() {
             const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if (!text) return;
+            const history = document.getElementById('chatMessages');
+            if(input.value.trim() === "") return;
 
-            const chatBody = document.getElementById('chatBody');
+            history.innerHTML += `<div class="bg-green-600/20 p-3 rounded-2xl rounded-tr-none text-right ml-10 mb-2">${input.value}</div>`;
             
-            // Message Utilisateur
-            chatBody.innerHTML += `<div class="msg user">${text}</div>`;
-            input.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
+            const userText = input.value.toLowerCase();
+            input.value = "";
 
-            // Simulation de réflexion du LLM
             setTimeout(() => {
-                let botReply = "Mzyan ! N'hésitez pas à nous contacter sur WhatsApp pour plus de détails ou à remplir le formulaire d'inscription.";
+                let reply = "D'accord ! Pour cette question précise, un de nos formateurs vous contactera. Mais saviez-vous que 'Shukran' veut dire merci ?";
+                if(userText.includes("prix")) reply = "Nos packs commencent à partir de 199 MAD. Le pack Immersion est le plus prisé !";
+                if(userText.includes("salam")) reply = "Wa Alaykum Salam ! Labas ? (Comment ça va ?)";
                 
-                if(text.toLowerCase().includes('prix') || text.toLowerCase().includes('tarif')) {
-                    botReply = "Nos tarifs commencent à 99 Dhs pour l'offre Découverte, 199 Dhs pour l'Intensif et 399 Dhs pour le VIP. Consultez la section 'Tarifs' !";
-                } else if(text.toLowerCase().includes('inscription')) {
-                    botReply = "Pour vous inscrire, c'est simple ! Scrollez jusqu'à la section 'Rejoignez-nous' et remplissez le formulaire.";
-                }
-
-                chatBody.innerHTML += `<div class="msg bot">${botReply}</div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
+                history.innerHTML += `<div class="bg-white/10 p-3 rounded-2xl rounded-tl-none mb-2 border-l-4 border-red-500">${reply}</div>`;
+                history.scrollTop = history.scrollHeight;
             }, 1000);
         }
+
+        // Accordion effect for FAQ
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.querySelector('p').classList.toggle('hidden');
+                item.querySelector('i').classList.toggle('rotate-180');
+            });
+        });
     </script>
 </body>
 </html>
