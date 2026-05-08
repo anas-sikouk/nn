@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annacer Assurance | Excellence & Multiservices</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            emerald: '#10b981', 
+                            gold: '#fbbf24',    
+                            dark: '#0a0a0a',    /* Noir Onyx pour la visibilité */
+                            accent: '#171717'   
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #0a0a0a; 
+            color: #ffffff; /* Force tout le texte en blanc par défaut */
+            overflow-x: hidden; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        /* Amélioration du contraste des cartes */
+        .glass { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+        }
+        .glass-dark { background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(12px); }
+        
+        .mesh-hero {
+            background: radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+        }
+        
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .animate-float { animation: floating 3s ease-in-out infinite; }
+        
+        .dify-wrapper { border-radius: 2.5rem; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.3); background: #000; }
+        
+        /* Correction spécifique pour les sous-titres qui étaient trop sombres */
+        .text-slate-400, .text-slate-500 { color: #cbd5e1 !important; } 
+    </style>
+</head>
+<body class="mesh-hero">
+
+    <header id="navbar" class="fixed w-full z-[90] py-6 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="glass rounded-3xl px-8 py-4 flex justify-between items-center border-white/20">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-brand-emerald rounded-xl flex items-center justify-center text-white shadow-lg rotate-3 shadow-emerald-500/30">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-black uppercase tracking-tighter leading-none text-white">Annacer</span>
+                        <span class="text-[9px] font-bold text-brand-gold uppercase tracking-widest text-white/90 italic">AtlantaSanad & Barid Cash</span>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-10 text-[11px] font-black uppercase tracking-widest">
+                    <a href="#hero" class="hover:text-brand-emerald transition-colors text-white">Accueil</a>
+                    <a href="#solutions" class="hover:text-brand-emerald transition-colors text-white">Services</a>
+                    <a href="#ai-chat" class="text-brand-gold flex items-center gap-2">Assistant IA</a>
+                    <a href="tel:0537595910" class="bg-white text-black px-6 py-3 rounded-xl hover:bg-brand-emerald hover:text-white transition-all flex items-center gap-2 font-bold">
+                        <i class="fas fa-phone-alt animate-pulse text-brand-emerald"></i> 05 37 59 59 10
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal active">
+                <h1 class="text-6xl lg:text-8xl font-black mb-8 leading-[0.9] italic text-white">L'Assurance <br><span class="text-brand-emerald not-italic">Elite.</span></h1>
+                <p class="text-lg text-white/80 mb-10 max-w-md">Expertise AtlantaSanad et services Barid Cash à Sidi Kacem. Une protection moderne avec une visibilité totale.</p>
+                <div class="flex gap-4">
+                    <a href="#ai-chat" class="px-8 py-4 bg-brand-emerald text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-emerald-500/40">Parler à l'IA</a>
+                    <a href="#solutions" class="px-8 py-4 glass text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all">Nos Services</a>
+                </div>
+            </div>
+            <div class="relative hidden lg:block animate-float">
+                <div class="glass p-10 rounded-[4rem] border-white/20 relative z-10 overflow-hidden">
+                    <div class="w-16 h-10 bg-gradient-to-br from-brand-gold to-yellow-600 rounded-lg mb-12"></div>
+                    <p class="text-[10px] text-white/60 font-bold uppercase mb-2">Titulaire du contrat</p>
+                    <p class="text-2xl font-bold tracking-tight italic uppercase text-white">Client Premium</p>
+                    <div class="flex justify-end mt-8 opacity-60 text-white"><i class="fab fa-cc-mastercard text-4xl"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-y border-white/10 bg-white/[0.03]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="text-center reveal">
+                    <p class="text-5xl font-black mb-2 text-brand-emerald">+7 ans</p>
+                    <p class="text-[10px] font-bold text-white/70 uppercase tracking-widest">D'Expérience</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-black mb-2 text-white">+2000</p>
+                    <p class="text-[10px] font-bold text-white/70 uppercase tracking-widest">Assurés</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-black mb-2 text-white">99%</p>
+                    <p class="text-[10px] font-bold text-white/70 uppercase tracking-widest">Satisfaction</p>
+                </div>
+                <div class="text-center reveal">
+                    <p class="text-5xl font-black mb-2 text-brand-gold">24/7</p>
+                    <p class="text-[10px] font-bold text-white/70 uppercase tracking-widest">IA Réactive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 reveal">
+                <h2 class="text-5xl font-black italic text-white">Nos Solutions <br><span class="text-brand-emerald">Globales.</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-10 rounded-[3rem] border-brand-gold/30 group reveal bg-white/[0.02]">
+                    <div class="w-16 h-16 bg-brand-gold rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-gold-500/30">
+                        <i class="fas fa-money-bill-transfer text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic text-white">Barid Cash</h4>
+                    <p class="text-sm text-white/70 mb-6">Transfert d'argent national et international, paiement de factures en agence.</p>
+                </div>
+                <div class="glass p-10 rounded-[3rem] border-white/20 reveal group bg-white/[0.02]">
+                    <div class="w-16 h-16 bg-brand-emerald rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/30">
+                        <i class="fas fa-car text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic text-white">Automobile</h4>
+                    <p class="text-sm text-white/70 mb-6">Protections complètes AtlantaSanad avec assistance 24h/24 à Sidi Kacem.</p>
+                </div>
+                <div class="glass p-10 rounded-[3rem] border-white/20 reveal group bg-white/[0.02]">
+                    <div class="w-16 h-16 bg-brand-emerald/20 rounded-2xl flex items-center justify-center mb-8 border border-brand-emerald/50">
+                        <i class="fas fa-heart-pulse text-brand-emerald text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic text-white">Santé</h4>
+                    <p class="text-sm text-white/70 mb-6">Couverture médicale optimale et remboursements simplifiés pour vous.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-chat" class="py-32 bg-white/[0.02]">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h3 class="text-5xl font-black italic mb-4 text-brand-gold uppercase">Expertise IA</h3>
+                <p class="text-white/60 uppercase text-[10px] font-black tracking-widest">Une question ? Notre assistant vous répond 24/7.</p>
+            </div>
+            <div class="reveal dify-wrapper shadow-2xl shadow-emerald-900/20">
+                <iframe src="https://udify.app/chatbot/LcfZLdSOjEi3VZ6p" style="width: 100%; height: 600px;" frameborder="0" allow="microphone"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/10 pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-4 gap-16 mb-20 text-white">
+                <div class="lg:col-span-2">
+                    <h4 class="text-2xl font-black italic tracking-tighter uppercase mb-6">Annacer Assurance</h4>
+                    <p class="text-white/60 max-w-sm">Partenaire AtlantaSanad & Barid Cash à Sidi Kacem. Proximité et innovation.</p>
+                </div>
+                <div>
+                    <h6 class="text-[10px] font-black uppercase text-brand-gold mb-8 tracking-widest">Contact Direct</h6>
+                    <ul class="space-y-4 text-sm font-bold">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-brand-emerald"></i> <span class="text-white">05 37 59 59 10</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-emerald"></i> <span class="text-white">assuranceannaceras@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-[10px] font-black text-white/30 uppercase tracking-widest">
+                © 2026 Agence Annacer.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.querySelector('nav').classList.add('glass-dark');
+            else nav.querySelector('nav').classList.remove('glass-dark');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
